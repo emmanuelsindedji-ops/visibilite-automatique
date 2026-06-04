@@ -692,9 +692,9 @@ Règles STRICTES :
 
 Retourne UNIQUEMENT le message.`;
 
-    const res = await fetch("https://api.anthropic.com/v1/messages",{
+    const res = await fetch("https://zag-ia.onrender.com/chat",{
       method:"POST", headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,messages:[{role:"user",content:prompt}]})
+      body:JSON.stringify({message:prompt})
     });
     const data = await res.json();
     currentGenMsg = (data.content||[]).map(i=>i.text||"").join("\n").trim() || "Erreur de génération.";
